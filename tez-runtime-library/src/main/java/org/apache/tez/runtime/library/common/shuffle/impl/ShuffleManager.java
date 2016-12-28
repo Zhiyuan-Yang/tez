@@ -771,7 +771,7 @@ public class ShuffleManager implements FetcherCallback {
 
   @Override
   public void fetchFailed(String host,
-      InputAttemptIdentifier srcAttemptIdentifier, boolean connectFailed) {
+      InputAttemptIdentifier srcAttemptIdentifier, boolean connectFailed) { // when fetcher fail to fetch one input version, this method is invoked but fetcher doesn't fail yet
     // TODO NEWTEZ. Implement logic to report fetch failures after a threshold.
     // For now, reporting immediately.
     LOG.info(srcNameTrimmed + ": " + "Fetch failed for src: " + srcAttemptIdentifier
@@ -1014,7 +1014,7 @@ public class ShuffleManager implements FetcherCallback {
     }
 
     @Override
-    public void onFailure(Throwable t) {
+    public void onFailure(Throwable t) { // this is invoked when fetcher totally failed, not just fail to fetch one input version
       // Unsuccessful - the fetcher may not have shutdown correctly. Try shutting it down.
       fetcher.shutdown();
       if (isShutdown.get()) {
