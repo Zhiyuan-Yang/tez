@@ -112,9 +112,9 @@ public class AMContainerImpl implements AMContainer {
   private boolean inError = false;
 
   @VisibleForTesting
-  Map<String, LocalResource> containerLocalResources;
+  Map<String, LocalResource> containerLocalResources; // dag level local resource
   @VisibleForTesting
-  Map<String, LocalResource> additionalLocalResources;
+  Map<String, LocalResource> additionalLocalResources; // vertex level local resource
 
   private Credentials credentials;
   private boolean credentialsChanged = false;
